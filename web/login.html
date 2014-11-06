@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>login</title>
+        <style>
+            #login{
+                border-style: solid; /*estilo da borda*/
+                padding: 30px 10px 10px 40px;/*espaço interno ate a borda*/
+                width: 200px;/*largura*/
+                height: 300px;/*altura*/
+                border-radius: 10px;/*arredondar a borda*/
+                border-width: 1px;/*largura da borda*/
+                margin: 210px 10px 10px 530px;/*margens*/
+            }
+        </style>
+        <script>
+            function validalogin(login){
+                if(login.LoginFunc.value=="" && login.SenhaFunc.value==""){
+                    alert("os campos Login e Senha estao o vazios");
+                    login.LoginFunc.focus();
+                    return false;
+                }
+                if(login.LoginFunc.value==""){
+                    alert("o campo Usuario esta vazio");
+                    login.LoginFunc.focus();
+                    return false;
+                }
+                if(login.SenhaFunc.value==""){
+                    alert("o campo Senha esta vazio");
+                    login.SenhaFunc.focus();
+                    return false;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="login">    
+            <img alt="" src="media/imagens/logo.jpg">
+            <form action="LoginFuncionario.do" method="POST" name="login" onsubmit="return validalogin(this)">
+        Usuario:<br/>
+        <input type="text" name="LoginFunc"/><br/>
+        Senha:<br/>
+        <input type="password" name="SenhaFunc"/><br/><br/>
+        <input type="submit" value="Ok"/> <input type="reset" value="Cancelar"/>
+        </form>
+        </div>
+    </body>
+</html>
