@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+//git teste
 @WebServlet(name = "CadastrarProduto", urlPatterns = {"/CadastrarProduto.do"})
 public class CadastrarProduto extends HttpServlet {
     private Factory factory;
