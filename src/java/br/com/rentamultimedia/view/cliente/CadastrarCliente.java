@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-//testee git
+//teste telvent
 @WebServlet(name = "CadastrarCliente", urlPatterns = {"/CadastrarCliente.do"})
 public class CadastrarCliente extends HttpServlet {
     private Cliente c;
