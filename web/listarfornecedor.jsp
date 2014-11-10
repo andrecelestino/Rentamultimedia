@@ -20,7 +20,12 @@
             </div>
             <div id="conteudo">
                 <div id="listarfornecedor">
-                    <table border="1">
+                        <%
+                            List<Fornecedor> listaf;
+                            listaf=(List<Fornecedor>)request.getAttribute("listaf");
+                            if(listaf!=null){  
+                        %>
+                        <table border="1">
                         <tr>
                             <th>Número do Fornecedor</th>    
                             <th>Razão Social</th>
@@ -29,11 +34,6 @@
                             <th>Endereço</th>
                             <th>Inscrição Estadual</th>
                          </tr>
-                        <%
-                            List<Fornecedor> listaf;
-                            listaf=(List<Fornecedor>)request.getAttribute("listaf");
-                            if(listaf.isEmpty()!=true){  
-                        %>
                         <%
                             for(int i=0;i<listaf.size();i++){
                             Fornecedor forn;

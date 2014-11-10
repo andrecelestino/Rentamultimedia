@@ -15,7 +15,7 @@
                 border-width: 1px;/*espessura da borda*/
                 border-radius: 10px;/*arredondar borda*/
                 width: 500px;/*largura*/
-                height: 510px;/*altura*/
+                height: 620px;/*altura*/
                 margin: 10px 10px 10px 440px;/*margens*/
                 padding: 40px 10px 10px 90px;/**/
             }

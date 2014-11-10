@@ -32,13 +32,14 @@ public class ListarFornecedor extends HttpServlet {
             factory=new Factory();
             fjc=new FornecedorJpaController(factory.getFactory());
             listaf=fjc.findFornecedorEntities();
-            if(listaf!=null){
-                request.setAttribute("listaf", listaf);
-                request.getRequestDispatcher("listarfornecedor.jsp").forward(request, response);
-            }else{
+            if(listaf.isEmpty()){
                 out.println("<script>");
                 out.println("alert('nao ha fornecedor cadastrado')");
+                out.println("window.location.href = \"listarfornecedor.jsp\";");
                 out.println("</script>");
+            }else{
+                request.setAttribute("listaf", listaf);
+                request.getRequestDispatcher("listarfornecedor.jsp").forward(request, response);
             }
             out.println("</body>");
             out.println("</html>");

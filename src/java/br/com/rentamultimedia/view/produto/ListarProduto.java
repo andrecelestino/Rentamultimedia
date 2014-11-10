@@ -32,13 +32,14 @@ public class ListarProduto extends HttpServlet {
             factory=new Factory();
             pfjc=new ProdutofornecedorJpaController(factory.getFactory());
             listapf=pfjc.findProdutofornecedorEntities();
-            if(listapf!=null){
-                request.setAttribute("listapf", listapf);
-                request.getRequestDispatcher("listarproduto.jsp").forward(request, response);
-            }else{
+            if(listapf.isEmpty()){
                 out.println("<script>");
                 out.println("alert('nao ha produto cadastrado')");
+                out.println("window.location.href = \"listarproduto.jsp\";");
                 out.println("</script>");
+            }else{
+                request.setAttribute("listapf", listapf);
+                request.getRequestDispatcher("listarproduto.jsp").forward(request, response);
             }
             out.println("</body>");
             out.println("</html>");

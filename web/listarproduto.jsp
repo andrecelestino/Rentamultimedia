@@ -25,7 +25,12 @@
             </div>
             <div id="conteudo">
                 <div id="listarproduto">
-                    <table border="1">
+                        <%
+                            List<Produtofornecedor> listapf;
+                            listapf=(List<Produtofornecedor>)request.getAttribute("listapf");
+                            if(listapf!=null){  
+                        %>
+                        <table border="1">
                         <tr>
                             <th>Número do Produto</th>    
                             <th>Tipo de Produto</th>
@@ -36,11 +41,6 @@
                             <th>Quantidade</th>
                             <th>Fornecedor</th>
                          </tr>
-                        <%
-                            List<Produtofornecedor> listapf;
-                            listapf=(List<Produtofornecedor>)request.getAttribute("listapf");
-                            if(listapf.isEmpty()!=true){  
-                        %>
                         <%
                             for(int i=0;i<listapf.size();i++){
                             Produtofornecedor pf;

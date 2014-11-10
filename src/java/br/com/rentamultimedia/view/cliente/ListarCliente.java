@@ -38,8 +38,8 @@ public class ListarCliente extends HttpServlet {
                 out.println("window.location.href = \"listarcliente.jsp\";");
                 out.println("</script>");
             }else{
-            request.setAttribute("listac", listac);
-            request.getRequestDispatcher("listarcliente.jsp").forward(request, response);
+                request.setAttribute("listac", listac);
+                request.getRequestDispatcher("listarcliente.jsp").forward(request, response);
             }
             out.println("</body>");
             out.println("</html>");

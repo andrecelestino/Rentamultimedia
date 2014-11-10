@@ -19,7 +19,12 @@
             </div>
             <div id="conteudo">
                 <div id="listarfuncionario">
-                    <table border="1">
+                        <%
+                            List<Funcionario> listaf;
+                            listaf=(List<Funcionario>)request.getAttribute("listaf");
+                            if(listaf!=null){  
+                        %>
+                        <table border="1">
                         <tr>
                             <th>Número do Funcionário</th>
                             <th>Nome</th>
@@ -31,11 +36,6 @@
                             <th>Senha</th>
                             <th>Perfil</th>
                         </tr>
-                        <%
-                            List<Funcionario> listaf;
-                            listaf=(List<Funcionario>)request.getAttribute("listaf");
-                            if(listaf!=null){  
-                        %>
                         <%
                             for(int i=0;i<listaf.size();i++){
                             Funcionario func;
