@@ -42,7 +42,7 @@
                             for(int i=0;i<listac.size();i++){
                                 Cliente c=listac.get(i);
                             %>    
-                            <option value="<%=c.getCodCliente()%>">Nº<%=c.getCodCliente()%> - <%=c.getNomeCliente()%></option>
+                            <option value="<%=c.getCodCliente()%>">Cod.<%=c.getCodCliente()%> - <%=c.getNomeCliente()%></option>
                             <%
                             }
                             }
