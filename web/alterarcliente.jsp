@@ -156,7 +156,6 @@
         </script>
     </head>
     <body>
-        <!--teste-->
         <div id="all">
             <div id="menu_alterarcliente">
                 <%@include file="include/menu.jsp" %>
