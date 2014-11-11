@@ -3,13 +3,16 @@ package br.com.rentamultimedia.entidade;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -20,9 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Pagto.findAll", query = "SELECT p FROM Pagto p"),
     @NamedQuery(name = "Pagto.findByCodPagto", query = "SELECT p FROM Pagto p WHERE p.codPagto = :codPagto"),
     @NamedQuery(name = "Pagto.findByValorPed", query = "SELECT p FROM Pagto p WHERE p.valorPed = :valorPed"),
-    @NamedQuery(name = "Pagto.findByValorDesc", query = "SELECT p FROM Pagto p WHERE p.valorDesc = :valorDesc"),
-    @NamedQuery(name = "Pagto.findByCodTipPagtoFK", query = "SELECT p FROM Pagto p WHERE p.codTipPagtoFK = :codTipPagtoFK"),
-    @NamedQuery(name = "Pagto.findByCodNFFK", query = "SELECT p FROM Pagto p WHERE p.codNFFK = :codNFFK")})
+    @NamedQuery(name = "Pagto.findByValorDesc", query = "SELECT p FROM Pagto p WHERE p.valorDesc = :valorDesc")})
 public class Pagto implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -35,11 +36,14 @@ public class Pagto implements Serializable {
     private BigDecimal valorPed;
     @Column(name = "ValorDesc")
     private BigDecimal valorDesc;
-    @Column(name = "CodTipPagtoFK")
-    private Integer codTipPagtoFK;
-    @Column(name = "CodNFFK")
-    private Integer codNFFK;
-
+    @OneToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name="CodTipPagto")
+    private Tipopagto tipopagto;
+    @OneToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name="CodNF")
+    private Nf nf;
+    
+    
     public Pagto() {
     }
 
@@ -71,20 +75,20 @@ public class Pagto implements Serializable {
         this.valorDesc = valorDesc;
     }
 
-    public Integer getCodTipPagtoFK() {
-        return codTipPagtoFK;
+    public Tipopagto getTipopagto() {
+        return tipopagto;
     }
 
-    public void setCodTipPagtoFK(Integer codTipPagtoFK) {
-        this.codTipPagtoFK = codTipPagtoFK;
+    public void setTipopagto(Tipopagto tipopagto) {
+        this.tipopagto = tipopagto;
     }
 
-    public Integer getCodNFFK() {
-        return codNFFK;
+    public Nf getNf() {
+        return nf;
     }
 
-    public void setCodNFFK(Integer codNFFK) {
-        this.codNFFK = codNFFK;
+    public void setNf(Nf nf) {
+        this.nf = nf;
     }
 
     @Override

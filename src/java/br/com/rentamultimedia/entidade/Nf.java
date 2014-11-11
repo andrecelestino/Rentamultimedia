@@ -5,13 +5,16 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,8 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Nf.findByEmailNF", query = "SELECT n FROM Nf n WHERE n.emailNF = :emailNF"),
     @NamedQuery(name = "Nf.findByDataEmissaoNF", query = "SELECT n FROM Nf n WHERE n.dataEmissaoNF = :dataEmissaoNF"),
     @NamedQuery(name = "Nf.findByDscPedido", query = "SELECT n FROM Nf n WHERE n.dscPedido = :dscPedido"),
-    @NamedQuery(name = "Nf.findByValorNF", query = "SELECT n FROM Nf n WHERE n.valorNF = :valorNF"),
-    @NamedQuery(name = "Nf.findByCodEntregaFK", query = "SELECT n FROM Nf n WHERE n.codEntregaFK = :codEntregaFK")})
+    @NamedQuery(name = "Nf.findByValorNF", query = "SELECT n FROM Nf n WHERE n.valorNF = :valorNF")})
 public class Nf implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -51,9 +53,10 @@ public class Nf implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "ValorNF")
     private BigDecimal valorNF;
-    @Column(name = "CodEntregaFK")
-    private Integer codEntregaFK;
-
+    @OneToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name="CodEntrega")
+    private Entrega entrega;
+    
     public Nf() {
     }
 
@@ -109,12 +112,12 @@ public class Nf implements Serializable {
         this.valorNF = valorNF;
     }
 
-    public Integer getCodEntregaFK() {
-        return codEntregaFK;
+    public Entrega getEntrega() {
+        return entrega;
     }
 
-    public void setCodEntregaFK(Integer codEntregaFK) {
-        this.codEntregaFK = codEntregaFK;
+    public void setEntrega(Entrega entrega) {
+        this.entrega = entrega;
     }
 
     @Override
