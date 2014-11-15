@@ -15,7 +15,7 @@
                 border-width: 1px;/*espessura da borda*/
                 border-radius: 10px;/*arredondar borda*/
                 width: 500px;/*largura*/
-                height: 620px;/*altura*/
+                height: 520px;/*altura*/
                 margin: 10px 10px 10px 440px;/*margens*/
                 padding: 40px 10px 10px 90px;/**/
             }
@@ -29,7 +29,6 @@
             <div id="conteudo">
                 <div id="cadastrarlocacao">
                     <form action="" method="POST">
-                        Data do Pedido:<input type="date" name="DataPedido"/><br/><br/>
                         <%
                         Factory factory=new Factory();
                         ClienteJpaController cjc=new ClienteJpaController(factory.getFactory());
@@ -49,7 +48,6 @@
                             %>
                                 </select><br/><br/>
                         Data de Devolução:<input type="date" name="DataDevolucao"/><br/><br/>
-                        Motivo da Devolução:<input type="text" name="MotivoDevolucao"/><br/><br/>
                         <%
                         Funcionario func=(Funcionario)request.getSession().getAttribute("funcionario");
                         %>
@@ -61,11 +59,7 @@
                         <option value="Débito">Débito</option>
                         <option value="Crédito">Crédito</option>
                         </select><br/><br/>
-                        Número da Nota Fiscal:<input type="text" name="NumNF"/><br/><br/>
                         E-mail da Nota Fiscal:<input type="text" name="EmailNF"/><br/><br/>
-                        Data de Emissão da Nota Fiscal:<input type="date" name="DataEmissaoNF"/><br/><br/>
-                        Desconto do Pedido:<input type="text" name="DscPedido"/><br/><br/>
-                        Valor da Nota Fiscal:<input type="text" name="ValorNF"/><br/><br/>
                         Data de Entrega:<input type="date" name="DataEntrega"/><br/><br/>
                         Endereço da Entrega:<input type="text" name="EndEntrega"/><br/><br/>
                         <input type="submit" value="cadastrar"/>

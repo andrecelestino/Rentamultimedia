@@ -49,6 +49,10 @@ public class Pedidolocacao implements Serializable {
     private Pagto pagto;
     
     public Pedidolocacao() {
+        Devolucao devolucao=new Devolucao();
+        this.devolucao=devolucao;
+        Pagto pagto=new Pagto();
+        this.pagto=pagto;
     }
 
     public Pedidolocacao(Integer codPedido) {
